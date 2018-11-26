@@ -187,16 +187,6 @@
               <item name="projetPoeVehicule" type="b2602c69:ProjectViewProjectNode" />
               <item name="projetPoeVehicule" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="projetPoeVehicule" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projetPoeVehicule" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projetPoeVehicule" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projetPoeVehicule" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -234,12 +224,12 @@
       <option name="presentableId" value="Default" />
       <updated>1543237739996</updated>
       <workItem from="1543237741168" duration="625000" />
-      <workItem from="1543238480400" duration="1376000" />
+      <workItem from="1543238480400" duration="2241000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2001000" />
+    <option name="totallyTimeSpent" value="2866000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
