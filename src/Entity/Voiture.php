@@ -26,6 +26,17 @@ class Voiture
      */
     private $kilometrage;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\TypeCarburant", inversedBy="IdVoiture")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $typeCarburant;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu", inversedBy="voiture")
+     */
+    private $lieu;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +62,30 @@ class Voiture
     public function setKilometrage(int $kilometrage): self
     {
         $this->kilometrage = $kilometrage;
+
+        return $this;
+    }
+
+    public function getTypeCarburant(): ?TypeCarburant
+    {
+        return $this->typeCarburant;
+    }
+
+    public function setTypeCarburant(?TypeCarburant $typeCarburant): self
+    {
+        $this->typeCarburant = $typeCarburant;
+
+        return $this;
+    }
+
+    public function getLieu(): ?Lieu
+    {
+        return $this->lieu;
+    }
+
+    public function setLieu(?Lieu $lieu): self
+    {
+        $this->lieu = $lieu;
 
         return $this;
     }
