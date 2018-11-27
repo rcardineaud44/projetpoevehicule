@@ -22,11 +22,7 @@ class VoitureController extends Controller
      */
     public function index(Request $request, EntityManagerInterface $em)
     {
-<<<<<<< HEAD
-        return $this->render('voiture/index.html.twig', [
-            'controller_name' => 'VoitureController',
-        ]);
-=======
+
 
         $voiture = new Voiture();
 
@@ -47,6 +43,5 @@ class VoitureController extends Controller
             return $this->render('voiture/index.html.twig', [
             'form' => $form->createView()
             ]);
->>>>>>> e461493b357ffc44e63aa2a2e624eac7b0cb8f02
     }
 }
