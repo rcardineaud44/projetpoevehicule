@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suivi véhicule{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h1 class="text-center">Suivi du véhicule : #REF_Vehicule</h1>
+
+
+
+                <table class="table">
+                    <thead>
+                    <tr class="active">
+                        <th>Nom conducteur</th>
+                        <th>Km parcourus</th>
+                        <th>Litres carburant</th>
+                        <th>Montant carburant</th>
+                        <th>Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {#{% for reservation in reservations %}#}
+                        <tr>
+                            <td>Dupont Georges</td>
+                            <td>75 km</td>
+                            <td>4,8L</td>
+                            <td>8,47€</td>
+                            <td>25/11/2018</td>
+                        </tr>
+                        <tr>
+                            <td>Bob Robert</td>
+                            <td>148 km</td>
+                            <td>9,4L</td>
+                            <td>17,05€</td>
+                            <td>26/11/2018</td>
+                        </tr>
+                    {#{% endfor %}#}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

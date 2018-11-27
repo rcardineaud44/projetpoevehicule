@@ -73,4 +73,13 @@ class VoitureController extends Controller
             'form' => $formResa->createView(), 'voiture' => $Detailvoiture]);
     }
 
+    /**
+     * @Route("/suivi/{id_voiture}", name="suivi")
+     */
+    public function suivi($id_voiture, Request $request, EntityManagerInterface $em)
+    {
+
+        return $this->render('voiture/suivi.html.twig');
+    }
+
 }
