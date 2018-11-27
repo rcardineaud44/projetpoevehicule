@@ -30,7 +30,7 @@
                         <td>{{ vehicule.lieu.lieu }}</td>
                         {% if vehicule.Disponibilite == 1 %}
                             <td class="dispo">Disponible</td>
-                            <td><a href="#"><button type="button" class="btn btn-default">Reserver</button></a></td>
+                            <td><a href="{{ path('voiture_reservation', {"id_voiture" : vehicule.id})}}"><button type="button" class="btn btn-default">Reserver</button></a></td>
                         {% else %}
                             <td class="nonDispo">Non Disponible</td>
                             <td><a href="#"><button type="button" class="btn btn-default">Retourner</button></a></td>
