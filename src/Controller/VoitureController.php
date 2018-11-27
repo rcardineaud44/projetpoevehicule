@@ -22,7 +22,6 @@ class VoitureController extends Controller
      */
     public function index(Request $request, EntityManagerInterface $em)
     {
-
         $voiture = new Voiture();
 
         $form = $this->createForm(AjoutVoitureType::class, $voiture);
@@ -32,12 +31,15 @@ class VoitureController extends Controller
         if($form->isSubmitted() && $form->isValid()){
             $em->persist($form);
             $em->flush();
+
+            $this->addFlash('success', 'Voiture ajoutée');
+
+            return $this->redirectToRoute('list');
         }
 
 
             return $this->render('voiture/index.html.twig', [
             'form' => $form->createView()
             ]);
-
     }
 }

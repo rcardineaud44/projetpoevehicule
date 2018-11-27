@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Lieu;
 use App\Entity\TypeCarburant;
 use App\Entity\Voiture;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -25,7 +26,12 @@ class AjoutVoitureType extends AbstractType
                 'required' => true,
                 "label" => "Type de Carburant :"
             ))
-            ->add('lieu', ChoiceType::class)
+            ->add('lieu', EntityType::class, array(
+                'class' => Lieu::class,
+                'choice_label' => 'lieu',
+                'required' => true,
+                "label" => "Lieu :"
+            ))
         ;
     }
 
