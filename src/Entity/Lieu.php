@@ -28,10 +28,6 @@ class Lieu
      */
     private $voiture;
 
-    public function __construct()
-    {
-        $this->voiture = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -80,4 +76,5 @@ class Lieu
 
         return $this;
     }
+
 }
