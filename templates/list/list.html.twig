@@ -22,46 +22,18 @@
                     </tr>
                     </thead>
                     <tbody>
+                    {% for vehicule in list %}
                     <tr>
-                        <td>vehicule A</td>
-                        <td>185 000 km</td>
-                        <td>Diesel</td>
-                        <td>Rennes</td>
+                        <td>{{ vehicule.reference }}</td>
+                        <td>{{ vehicule.kilometrage }} km</td>
+                        <td>{{ vehicule.typeCarburant.type }}</td>
+                        <td>{{ vehicule.lieu.lieu }}</td>
                         <td class="nonDispo">Non Disp.</td>
                         <td>
                             <a href="#"><button type="button" class="btn btn-default">Retourner</button></a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>vehicule B</td>
-                        <td>45 000 km</td>
-                        <td>Essence</td>
-                        <td>St Herblain</td>
-                        <td class="dispo">Disp.</td>
-                        <td>
-                            <a href="#"><button type="button" class="btn btn-default">Reserver</button></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>vehicule C</td>
-                        <td>10 km</td>
-                        <td>Electrique</td>
-                        <td>Hub Creatic</td>
-                        <td class="dispo">Disp.</td>
-                        <td>
-                            <a href="#"><button type="button" class="btn btn-default">Reserver</button></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>vehicule D</td>
-                        <td>525 000 km</td>
-                        <td>Diesel</td>
-                        <td>Niort</td>
-                        <td class="nonDispo">Non Disp.</td>
-                        <td>
-                            <a href="#"><button type="button" class="btn btn-default">Retourner</button></a>
-                        </td>
-                    </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
                 {#{% if is_granted("ROLE_ADMIN") %}#}
