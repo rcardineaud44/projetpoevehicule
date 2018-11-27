@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 td, th{
     text-align: center;
 }
@@ -23,15 +23,15 @@ footer{
     color: #fff!important;
     
 }
-footer #copyright{
+footer #copyright {
     text-align: center;
     padding: 60px 0 40px;
-=======
+}
 h1{
     text-align: center;
 }
 
 .formAjoutVoiture{
     border : solid black 2px;
->>>>>>> e461493b357ffc44e63aa2a2e624eac7b0cb8f02
+
 }
