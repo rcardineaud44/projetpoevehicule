@@ -2,14 +2,42 @@
 <html>
     <head>
         <meta charset="UTF-8">
+<<<<<<< HEAD
+        <title>{% block title %}ENI, Gestion voiture{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset("css/style.css") }}">
+=======
         <title>{% block title %}{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href='{{ asset("css/style.css") }}' >
 
+>>>>>>> e461493b357ffc44e63aa2a2e624eac7b0cb8f02
     </head>
     <body>
+    <header>
+        {% include 'nav/navbar.html.twig' %}
+    </header>
+    <div class="container">
         {% block body %}{% endblock %}
+    </div>
         {% block javascripts %}{% endblock %}
+
+    <!-- footer -->
+    <footer class="footer-row">
+            <div id="mentions-legales" class="lg-18 md-22 xs-14">
+
+                <p>ZAC du Moulin Neuf - 2 B, rue Benjamin Franklin</p>
+                <p>BP 80009 - 44801 Saint-Herblain</p>
+                <p>ecole@eni-ecole.fr - Tél. 02 28 03 17 28</p>
+                <p>ENI Ecole - RCS Nantes : 392 807 061 </p>
+                <p>Non assujetti à la TVA - Capital Social : 40 000 €</p>
+
+            </div>
+        </div>
+        <div id="copyright">© ENI Ecole <a href="#">Mentions légales et protection des données</a></div>
+    </footer>
+
     </body>
 </html>
