@@ -1,0 +1,28 @@
+td, th{
+    text-align: center;
+}
+.dispo{
+    background: #05F102;
+}
+.nonDispo{
+    background: red;
+}
+.table{
+    border-collapse:collapse;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+footer{
+    margin-left: -15px;
+    margin-right: -15px;
+    background-color: #282828;
+    text-align: center;
+    display: block;
+    margin-top: 50px;
+    color: #fff!important;
+    
+}
+footer #copyright{
+    text-align: center;
+    padding: 60px 0 40px;
+}

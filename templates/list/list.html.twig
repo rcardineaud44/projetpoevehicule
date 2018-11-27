@@ -4,17 +4,73 @@
 
 {% block body %}
 
-    <h1>Liste des véhicules</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
 
-    <table>
-        <tr>
-            <th>Réferénce Véhicule</th>
-            <th>Kilométrage</th>
-            <th>Type de carburant</th>
-            <th>Lieu</th>
-            <th>Disponibilité</th>
-            <th>Action</th>
-        </tr>
-    </table>
+                <h1 class="text-center">Liste des véhicules</h1>
+
+                <table class="table">
+                    <thead>
+                    <tr class="active">
+                        <th>Réferénce Véhicule</th>
+                        <th>Kilométrage</th>
+                        <th>Type de carburant</th>
+                        <th>Lieu</th>
+                        <th>Disponibilité</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>vehicule A</td>
+                        <td>185 000 km</td>
+                        <td>Diesel</td>
+                        <td>Rennes</td>
+                        <td class="nonDispo">Non Disp.</td>
+                        <td>
+                            <a href="#"><button type="button" class="btn btn-default">Retourner</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>vehicule B</td>
+                        <td>45 000 km</td>
+                        <td>Essence</td>
+                        <td>St Herblain</td>
+                        <td class="dispo">Disp.</td>
+                        <td>
+                            <a href="#"><button type="button" class="btn btn-default">Reserver</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>vehicule C</td>
+                        <td>10 km</td>
+                        <td>Electrique</td>
+                        <td>Hub Creatic</td>
+                        <td class="dispo">Disp.</td>
+                        <td>
+                            <a href="#"><button type="button" class="btn btn-default">Reserver</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>vehicule D</td>
+                        <td>525 000 km</td>
+                        <td>Diesel</td>
+                        <td>Niort</td>
+                        <td class="nonDispo">Non Disp.</td>
+                        <td>
+                            <a href="#"><button type="button" class="btn btn-default">Retourner</button></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                {#{% if is_granted("ROLE_ADMIN") %}#}
+                <a href="#"><button type="button" class="btn btn-primary pull-right">
+                    Ajouter un véhicule
+                </button></a>
+                {#{% endif %}#}
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

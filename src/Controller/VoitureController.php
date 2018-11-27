@@ -17,7 +17,7 @@ class VoitureController extends Controller
      */
     public function index()
     {
-        return $this->render('voiture/list.html.twig', [
+        return $this->render('voiture/index.html.twig', [
             'controller_name' => 'VoitureController',
         ]);
     }
