@@ -28,10 +28,13 @@
                         <td>{{ vehicule.kilometrage }} km</td>
                         <td>{{ vehicule.typeCarburant.type }}</td>
                         <td>{{ vehicule.lieu.lieu }}</td>
-                        <td class="nonDispo">Non Disp.</td>
-                        <td>
-                            <a href="#"><button type="button" class="btn btn-default">Retourner</button></a>
-                        </td>
+                        {% if vehicule.Disponibilite == 1 %}
+                            <td class="dispo">Disponible</td>
+                            <td><a href="#"><button type="button" class="btn btn-default">Reserver</button></a></td>
+                        {% else %}
+                            <td class="nonDispo">Non Disponible</td>
+                            <td><a href="#"><button type="button" class="btn btn-default">Retourner</button></a></td>
+                        {% endif %}
                     </tr>
                     {% endfor %}
                     </tbody>
