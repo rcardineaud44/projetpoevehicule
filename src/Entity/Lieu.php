@@ -24,7 +24,7 @@ class Lieu
     private $lieu;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Voiture", mappedBy="lieu")
+     * @ORM\OneToMany(targetEntity="App\Entity\Voiture", mappedBy="lieu", cascade={"persist", "remove"})
      */
     private $voiture;
 

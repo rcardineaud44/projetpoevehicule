@@ -29,6 +29,7 @@ class VoitureController extends Controller
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
+            $voiture->setDisponibilite(true);
             $em->persist($voiture);
             $em->flush();
 

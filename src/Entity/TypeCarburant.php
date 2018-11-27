@@ -24,7 +24,7 @@ class TypeCarburant
     private $Type;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Voiture", mappedBy="typeCarburant")
+     * @ORM\OneToMany(targetEntity="App\Entity\Voiture", mappedBy="typeCarburant", cascade={"persist", "remove"})
      */
     private $IdVoiture;
 
