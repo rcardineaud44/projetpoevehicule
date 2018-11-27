@@ -2,8 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Voiture;
+use App\Form\AjoutVoitureType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+
 
 /**
  * Class VoitureController
@@ -15,10 +20,23 @@ class VoitureController extends Controller
     /**
      * @Route("/", name="index")
      */
-    public function index()
+    public function index(Request $request, EntityManagerInterface $em)
     {
-        return $this->render('voiture/list.html.twig', [
-            'controller_name' => 'VoitureController',
-        ]);
+
+        $voiture = new Voiture();
+
+        $form = $this->createForm(AjoutVoitureType::class, $voiture);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $em->persist($form);
+            $em->flush();
+        }
+
+
+            return $this->render('voiture/index.html.twig', [
+            'form' => $form->createView()
+            ]);
     }
 }

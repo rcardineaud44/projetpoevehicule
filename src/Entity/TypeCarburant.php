@@ -50,6 +50,11 @@ class TypeCarburant
         return $this;
     }
 
+    public function getCarburant(): ?string
+    {
+        return $this->Type;
+    }
+
     /**
      * @return Collection|Voiture[]
      */
@@ -80,4 +85,6 @@ class TypeCarburant
 
         return $this;
     }
+
+
 }
