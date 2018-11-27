@@ -29,7 +29,8 @@ class VoitureController extends Controller
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            $em->persist($form);
+            $voiture->setDisponibilite(true);
+            $em->persist($voiture);
             $em->flush();
 
             $this->addFlash('success', 'Voiture ajoutée');

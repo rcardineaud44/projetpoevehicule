@@ -38,6 +38,11 @@ class Voiture
      */
     private $lieu;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $Disponibilite;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -87,6 +92,18 @@ class Voiture
     public function setLieu(?Lieu $lieu): self
     {
         $this->lieu = $lieu;
+
+        return $this;
+    }
+
+    public function getDisponibilite(): ?bool
+    {
+        return $this->Disponibilite;
+    }
+
+    public function setDisponibilite(bool $Disponibilite): self
+    {
+        $this->Disponibilite = $Disponibilite;
 
         return $this;
     }
