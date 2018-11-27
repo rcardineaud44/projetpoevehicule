@@ -33,6 +33,6 @@ h1{
 .formAjoutVoiture{
     border : solid black 2px;
 }
-.bienvenue{
-    color: white;
+.bienvenue:hover{
+    cursor: default
 }
