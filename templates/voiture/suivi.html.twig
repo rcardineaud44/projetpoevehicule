@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suivi véhicule{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h1 class="text-center">Suivi du véhicule : </h1>
+
+
+
+                <table class="table">
+                    <thead>
+                    <tr class="active">
+                        <th>Nom conducteur</th>
+                        <th>Km parcourus</th>
+                        <th>Litres carburant</th>
+                        <th>Montant carburant</th>
+                        <th>Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for reservation in reservations %}
+                        <tr>
+                            <td>{{ reservation.conduteur.nom }}</td>
+                            <td>{{ reservation.km_parcourus }}km</td>
+                            <td>{{ reservation.litres_carburant }}L</td>
+                            <td>{{ reservation.montant_carburant }}€</td>
+                            <td> {{ reservation.date|date("d/m/Y") }} </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

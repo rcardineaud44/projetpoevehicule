@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Reservation;
 use App\Entity\Voiture;
 use App\Form\AjoutVoitureType;
 use App\Form\ReservationType;
+use App\Repository\ReservationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
@@ -71,6 +73,21 @@ class VoitureController extends Controller
 
         return $this->render('voiture/reservation.html.twig', [
             'form' => $formResa->createView(), 'voiture' => $Detailvoiture]);
+    }
+
+    /**
+     * @Route("/suivi/{id_voiture}", name="suivi")
+     */
+    public function suivi($id_voiture, Request $request, EntityManagerInterface $em)
+    {
+        $detailRepo = $em->getRepository(Reservation::class);
+        $voiture = $detailRepo->find($id_voiture);
+
+        $reservation = $detailRepo->returnAllReservationByVoiture($id_voiture);
+
+        return $this->render('voiture/suivi.html.twig', [
+            'reservations' => $reservation,
+            'voiture' => $voiture]);
     }
 
 }
