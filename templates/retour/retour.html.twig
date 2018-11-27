@@ -4,46 +4,106 @@
 
 {% block body %}
 
-<div class="formAjoutVoiture col-lg-4 col-md-8 col-sm-8 col-12">
-    {{ form_start(retourForm) }}
-    {{ form_widget(retourForm) }}
+    <h1>Retour Véhicule : </h1>
 
-    <button type="submit" class="btn btn-primary center-block">Valider</button>
 
-    {{ form_end(retourForm) }}
-</div>
 
-    {#<div class="well">#}
+        {{ form_start(retourForm, {'attr': {'class': 'form-horizontal'}}) }}
+        <div class="col-md-6 form-line">
 
-        {#{{ form_start(retourForm, {'attr': {'class': 'form-horizontal'}}) }}#}
+            <div class="form-group">
+                {{ form_label(retourForm.date, "Date de début d'utilisation : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(retourForm.date) }}
+                <div class="col-sm-9">
+                    {{ form_widget(retourForm.date) }}
+                </div>
+            </div>
 
-        {#<div class="form-group">#}
-            {#{{ form_label(retourForm.date, "Date de début d'utilisation : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}#}
-            {#{{ form_errors(retourForm.date) }}#}
-            {#<div class="col-sm-10">#}
-                {#{{ form_widget(retourForm.date, {'attr': {'class': 'form-control'}}) }}#}
-            {#</div>#}
-        {#</div>#}
+            <div class="form-group">
+                {{ form_label(retourForm.nature_deplacement, "Nature du déplacement : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(retourForm.nature_deplacement) }}
+                <div class="col-sm-9">
+                    {{ form_widget(retourForm.nature_deplacement, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
 
-        {#<div class="form-group">#}
-            {#{{ form_label(retourForm.password, "Mot de passe", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}#}
-            {#{{ form_errors(retourForm.password) }}#}
-            {#<div class="col-sm-10">#}
-                {#{{ form_widget(retourForm.password, {'attr': {'class': 'form-control'}}) }}#}
-            {#</div>#}
-        {#</div>#}
+            <div class="form-group">
+                {{ form_label(retourForm.lieu, "Lieu de recption véhicule : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(retourForm.lieu) }}
+                <div class="col-sm-9">
+                    {{ form_widget(retourForm.lieu, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
 
-        {#<div class="form-group">#}
-            {#{{ form_label(retourForm.email, "Email", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}#}
-            {#{{ form_errors(userForm.email) }}#}
-            {#<div class="col-sm-10">#}
-                {#{{ form_widget(retourForm.email, {'attr': {'class': 'form-control'}}) }}#}
-            {#</div>#}
-        {#</div>#}
+            <div class="form-group">
+                {{ form_label(retourForm.destination, "Destination", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(retourForm.destination) }}
+                <div class="col-sm-9">
+                    {{ form_widget(retourForm.destination, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
 
-        {#<button type="submit" class="btn btn-primary">Valider</button>#}
+            <hr>
 
-        {#{{ form_end(retourForm) }}#}
+            <div class="form-group">
+                <div class="col-sm-10">
+                    {{ form_label(retourForm.litre_carburant, "Carburant", {'label_attr': {'class': 'col-sm-8 control-label'}}) }}
+                </div>
+            </div>
 
-    {#</div>#}
+            <div class="form-group">
+                {{ form_errors(retourForm.litre_carburant) }}
+                <div class="col-sm-6">
+                    {{ form_widget(retourForm.litre_carburant, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="col-sm-6">
+                    {{ form_widget(retourForm.montant_carburant, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="form-group">
+                <div class="col-sm-10">
+                    {{ form_label(retourForm.vehicule, "Kilomètres", {'label_attr': {'class': 'col-sm-8 control-label'}}) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_errors(retourForm.litre_carburant) }}
+                <div class="col-sm-6">
+                    {{ form_widget(retourForm.vehicule, {'attr': {'class': 'form-control' }}) }}
+                </div>
+
+                <div class="col-sm-6">
+                    {{ form_widget(retourForm.km_parcourus, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                {{ form_label(retourForm.conduteur, "Conducteur : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(retourForm.conduteur) }}
+                <div class="col-sm-9">
+                    {{ form_widget(retourForm.conduteur, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(retourForm.commentaire, "Commentaire : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(retourForm.commentaire) }}
+                <div class="col-sm-9">
+                    {{ form_widget(retourForm.commentaire, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-9">
+                    <input type="submit" class="btn btn-primary center-block" value="Valider">
+                </div>
+            </div>
+        </div>
+
+        {{ form_end(retourForm) }}
+
 {% endblock %}
