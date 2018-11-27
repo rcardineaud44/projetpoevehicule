@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-12">
 
-                <h1 class="text-center">Suivi du véhicule : #REF_Vehicule</h1>
+                <h1 class="text-center">Suivi du véhicule : </h1>
 
 
 
@@ -23,22 +23,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {#{% for reservation in reservations %}#}
+                    {% for reservation in reservations %}
                         <tr>
-                            <td>Dupont Georges</td>
-                            <td>75 km</td>
-                            <td>4,8L</td>
-                            <td>8,47€</td>
-                            <td>25/11/2018</td>
+                            <td>{{ reservation.conduteur.nom }}</td>
+                            <td>{{ reservation.km_parcourus }}km</td>
+                            <td>{{ reservation.litres_carburant }}L</td>
+                            <td>{{ reservation.montant_carburant }}€</td>
+                            <td> {{ reservation.date|date("d/m/Y") }} </td>
                         </tr>
-                        <tr>
-                            <td>Bob Robert</td>
-                            <td>148 km</td>
-                            <td>9,4L</td>
-                            <td>17,05€</td>
-                            <td>26/11/2018</td>
-                        </tr>
-                    {#{% endfor %}#}
+                    {% endfor %}
                     </tbody>
                 </table>
 

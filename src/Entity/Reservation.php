@@ -84,7 +84,7 @@ class Reservation
         return $this;
     }
 
-    public function getLitreCarburant()
+    public function getlitres_carburant()
     {
         return $this->litre_carburant;
     }
@@ -96,7 +96,7 @@ class Reservation
         return $this;
     }
 
-    public function getMontantCarburant()
+    public function getmontant_carburant()
     {
         return $this->montant_carburant;
     }
@@ -108,7 +108,7 @@ class Reservation
         return $this;
     }
 
-    public function getKmParcourus(): ?int
+    public function getkm_parcourus(): ?int
     {
         return $this->km_parcourus;
     }
