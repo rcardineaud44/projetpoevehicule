@@ -8,9 +8,10 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
+                <li class="active"><a href="#">Bienvenue {{ app.user.username }}</a></li>
+                <li><a href="{{ url('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
             {% else %}
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
+                <li><a href="{{ url('connect') }}"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
             {% endif %}
         </ul>
     </div>

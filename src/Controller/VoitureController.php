@@ -39,7 +39,7 @@ class VoitureController extends Controller
         }
 
 
-            return $this->render('voiture/index.html.twig', [
+            return $this->render('voiture/voiture.html.twig', [
             'form' => $form->createView()
             ]);
     }
