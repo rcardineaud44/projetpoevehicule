@@ -32,6 +32,10 @@ class VoitureController extends Controller
         if($form->isSubmitted() && $form->isValid()){
             $em->persist($form);
             $em->flush();
+
+            $this->addFlash('success', 'Voiture ajoutée');
+
+            return $this->redirectToRoute('list');
         }
 
 
