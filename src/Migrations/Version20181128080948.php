@@ -8,14 +8,14 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20181127142044 extends AbstractMigration
+final class Version20181128080948 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE reservation ADD destination VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE reservation ADD litre_carburant NUMERIC(10, 2) DEFAULT NULL, ADD montant_carburant NUMERIC(10, 2) DEFAULT NULL, DROP litreCarburant, DROP montantCarburant, CHANGE kmparcourus km_parcourus INT NOT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -23,6 +23,6 @@ final class Version20181127142044 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE reservation DROP destination');
+        $this->addSql('ALTER TABLE reservation ADD litreCarburant NUMERIC(10, 2) DEFAULT NULL, ADD montantCarburant NUMERIC(10, 2) DEFAULT NULL, DROP litre_carburant, DROP montant_carburant, CHANGE km_parcourus kmParcourus INT NOT NULL');
     }
 }

@@ -24,19 +24,19 @@ class Reservation
     private $date;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
-    private $litre_carburant;
+    private $litreCarburant;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
-    private $montant_carburant;
+    private $montantCarburant;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $km_parcourus;
+    private $kmParcourus;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -53,7 +53,7 @@ class Reservation
      * @ORM\ManyToOne(targetEntity="App\Entity\NatureDeplacement")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $nature_deplacement;
+    private $natureDeplacement;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Voiture")
@@ -89,38 +89,38 @@ class Reservation
         return $this;
     }
 
-    public function getlitres_carburant()
+    public function getlitreCarburant()
     {
-        return $this->litre_carburant;
+        return $this->litreCarburant;
     }
 
-    public function setLitreCarburant($litre_carburant): self
+    public function setLitreCarburant($litreCarburant): self
     {
-        $this->litre_carburant = $litre_carburant;
+        $this->litreCarburant = $litreCarburant;
 
         return $this;
     }
 
-    public function getmontant_carburant()
+    public function getmontantCarburant()
     {
-        return $this->montant_carburant;
+        return $this->montantCarburant;
     }
 
-    public function setMontantCarburant($montant_carburant): self
+    public function setMontantCarburant($montantCarburant): self
     {
-        $this->montant_carburant = $montant_carburant;
+        $this->montantCarburant = $montantCarburant;
 
         return $this;
     }
 
-    public function getkm_parcourus(): ?int
+    public function getkmParcourus(): ?int
     {
-        return $this->km_parcourus;
+        return $this->kmParcourus;
     }
 
-    public function setKmParcourus(int $km_parcourus): self
+    public function setKmParcourus(int $kmParcourus): self
     {
-        $this->km_parcourus = $km_parcourus;
+        $this->kmParcourus = $kmParcourus;
 
         return $this;
     }
@@ -151,12 +151,12 @@ class Reservation
 
     public function getNatureDeplacement(): ?NatureDeplacement
     {
-        return $this->nature_deplacement;
+        return $this->natureDeplacement;
     }
 
-    public function setNatureDeplacement(?NatureDeplacement $nature_deplacement): self
+    public function setNatureDeplacement(?NatureDeplacement $natureDeplacement): self
     {
-        $this->nature_deplacement = $nature_deplacement;
+        $this->natureDeplacement = $natureDeplacement;
 
         return $this;
     }

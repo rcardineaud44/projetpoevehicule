@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <h1>Retour Véhicule : </h1>
+    <h1>Retour Véhicule : {{ voiture.Reference }}</h1>
 
 
 
@@ -20,10 +20,10 @@
             </div>
 
             <div class="form-group">
-                {{ form_label(retourForm.nature_deplacement, "Nature du déplacement : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-                {{ form_errors(retourForm.nature_deplacement) }}
+                {{ form_label(retourForm.natureDeplacement, "Nature du déplacement : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(retourForm.natureDeplacement) }}
                 <div class="col-sm-9">
-                    {{ form_widget(retourForm.nature_deplacement, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(retourForm.natureDeplacement, {'attr': {'class': 'form-control'}}) }}
                 </div>
             </div>
 
@@ -47,17 +47,17 @@
 
             <div class="form-group">
                 <div class="col-sm-10">
-                    {{ form_label(retourForm.litre_carburant, "Carburant", {'label_attr': {'class': 'col-sm-8 control-label'}}) }}
+                    {{ form_label(retourForm.litreCarburant, "Carburant", {'label_attr': {'class': 'col-sm-8 control-label'}}) }}
                 </div>
             </div>
 
             <div class="form-group">
-                {{ form_errors(retourForm.litre_carburant) }}
+                {{ form_errors(retourForm.litreCarburant) }}
                 <div class="col-sm-6">
-                    {{ form_widget(retourForm.litre_carburant, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(retourForm.litreCarburant, {'attr': {'class': 'form-control'}}) }}
                 </div>
                 <div class="col-sm-6">
-                    {{ form_widget(retourForm.montant_carburant, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(retourForm.montantCarburant, {'attr': {'class': 'form-control'}}) }}
                 </div>
             </div>
 
@@ -70,13 +70,13 @@
             </div>
 
             <div class="form-group">
-                {{ form_errors(retourForm.litre_carburant) }}
+                {{ form_errors(retourForm.vehicule) }}
                 <div class="col-sm-6">
                     {{ form_widget(retourForm.vehicule, {'attr': {'class': 'form-control' }}) }}
                 </div>
 
                 <div class="col-sm-6">
-                    {{ form_widget(retourForm.km_parcourus, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(retourForm.kmParcourus, {'attr': {'class': 'form-control'}}) }}
                 </div>
             </div>
         </div>
@@ -84,9 +84,12 @@
             <div class="form-group">
                 {{ form_label(retourForm.conduteur, "Conducteur : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
                 {{ form_errors(retourForm.conduteur) }}
+                {#{% for conduteurs in retourForm.conduteur %}#}
                 <div class="col-sm-9">
+                    {{ form_errors(retourForm.conduteur) }}
                     {{ form_widget(retourForm.conduteur, {'attr': {'class': 'form-control'}}) }}
                 </div>
+                {#{% endfor %}#}
             </div>
 
             <div class="form-group">
