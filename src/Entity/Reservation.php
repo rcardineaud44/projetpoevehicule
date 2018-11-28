@@ -81,11 +81,16 @@ class Reservation
         return $this->id;
     }
 
-
     public function getLitreCarburant()
     {
         return $this->litreCarburant;
     }
+
+    public function litreCarburant()
+    {
+        return $this->litreCarburant;
+    }
+
 
     public function setLitreCarburant($litreCarburant): self
     {
@@ -98,6 +103,13 @@ class Reservation
     {
         return $this->montantCarburant;
     }
+
+    public function montantCarburant()
+    {
+        return $this->montantCarburant;
+    }
+
+
 
     public function setMontantCarburant($montantCarburant): self
     {
@@ -114,7 +126,6 @@ class Reservation
     public function setKmParcouru(int $kmParcouru): self
     {
         $this->kmParcouru = $kmParcouru;
-
         return $this;
     }
 

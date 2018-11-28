@@ -49,13 +49,14 @@ class RetourType extends AbstractType
                 'required' => true,
                 "label" => "Kilometrage au compteur :"
             ])
-            ->add('conducteur', EntityType::class, [
-                'class' => Conducteur::class,
-                'choice_label' => 'nom',
-                'required' => true,
-                "label" => "nom :",
-                'mapped' => false
-            ])
+
+            ->add('conduteur', EntityType::class, array(
+                    'class' => Conducteur::class,
+                    'choice_label' => 'Conducteur',
+                    'required' => true,
+                    "label" => "Conducteur :"
+            ))
+
         ;
     }
 

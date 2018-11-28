@@ -50,6 +50,7 @@ class Conducteur
         return $this;
     }
 
+<<<<<<< HEAD
     /**
      * @return Collection|Reservation[]
      */
@@ -76,5 +77,10 @@ class Conducteur
         }
 
         return $this;
+=======
+    public function getConducteur(): ?Conducteur
+    {
+        return $this->conducteur;
+>>>>>>> 81f267a85aea8ace0b47fc7e8037a1102e6e11e6
     }
 }
