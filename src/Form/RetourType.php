@@ -9,61 +9,53 @@ use App\Entity\Reservation;
 use App\Entity\Voiture;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RetourType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date', DateType::class)
-            ->add('litreCarburant', NumberType::class, array(
-                'attr' => array(
-                    'placeholder' => 'Litre',),
-                'scale' => 2
-            ))
-            ->add('montantCarburant', NumberType::class, array(
-                'attr' => array(
-                    'placeholder' => 'Montant',)))
-            ->add('kmParcourus', IntegerType::class, array(
-                'attr' => array(
-                    'placeholder' => 'Km parcourus',),
-                'scale' => 2
-            ))
-            ->add('commentaire', TextareaType::class)
+            ->add('dateUtilisation', DateTimeType::class, [
+                'label'=> 'Date du trajet : '
+            ])
+            ->add('litreCarburant', NumberType::class)
+            ->add('montantCarburant', NumberType::class)
+            ->add('kmParcouru', IntegerType::class)
             ->add('destination', TextType::class)
-            ->add('lieu', EntityType::class , array(
-                'class' => Lieu::class,
-                'choice_label' => 'lieu',
-                'required' => false,
-                "label" => "Lieu :"
-            ))
-            ->add('natureDeplacement', EntityType::class, array(
+            ->add('commentaire', TextareaType::class)
+            ->add('nature', EntityType::class, [
                 'class' => NatureDeplacement::class,
-                'choice_label' => 'Nature Deplacement',
+                'choice_label' => 'natureDeplacement',
                 'required' => true,
-                "label" => "Nature Déplacement :"
-            ))
-            ->add('vehicule', EntityType::class, array(
+                "label" => "Nature deplacement :"
+            ])
+            ->add('lieu', EntityType::class, [
+                    'class' => Lieu::class,
+                    'choice_label' => 'lieu',
+                    'required' => true,
+                    "label" => "Lieu de reception vehicule :"
+            ])
+            ->add('vehicule', EntityType::class, [
                 'class' => Voiture::class,
-                'choice_label' => 'kilometrage',
+                'choice_label' => 'Kilometrage',
                 'required' => true,
-                'attr' => array(
-                    'placeholder' => 'Km au compteur'
-                )
-            ))
-            ->add('conduteur', TextType::class, array(
-                'attr' => array(
-                    'placeholder' => 'Votre nom'
-                )
-            ))
+                "label" => "Kilometrage au compteur :"
+            ])
+            ->add('conducteur', EntityType::class, [
+                'class' => Conducteur::class,
+                'choice_label' => 'nom',
+                'required' => true,
+                "label" => "nom :",
+                'mapped' => false
+            ])
         ;
     }
 

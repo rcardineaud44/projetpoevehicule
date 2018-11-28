@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,6 +23,16 @@ class Conducteur
      */
     private $nom;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Reservation", mappedBy="conducteur")
+     */
+    private $reservation_id;
+
+    public function __construct()
+    {
+        $this->reservation_id = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +46,34 @@ class Conducteur
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Reservation[]
+     */
+    public function getReservationId(): Collection
+    {
+        return $this->reservation_id;
+    }
+
+    public function addReservationId(Reservation $reservationId): self
+    {
+        if (!$this->reservation_id->contains($reservationId)) {
+            $this->reservation_id[] = $reservationId;
+            $reservationId->addConducteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservationId(Reservation $reservationId): self
+    {
+        if ($this->reservation_id->contains($reservationId)) {
+            $this->reservation_id->removeElement($reservationId);
+            $reservationId->removeConducteur($this);
+        }
 
         return $this;
     }

@@ -28,6 +28,16 @@ class Lieu
      */
     private $voiture;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Reservation", mappedBy="lieu")
+     */
+    private $lieu_id;
+
+    public function __construct()
+    {
+        $this->lieu_id = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -71,6 +81,37 @@ class Lieu
             // set the owning side to null (unless already changed)
             if ($voiture->getLieu() === $this) {
                 $voiture->setLieu(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Reservation[]
+     */
+    public function getLieuId(): Collection
+    {
+        return $this->lieu_id;
+    }
+
+    public function addLieuId(Reservation $lieuId): self
+    {
+        if (!$this->lieu_id->contains($lieuId)) {
+            $this->lieu_id[] = $lieuId;
+            $lieuId->setLieu($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLieuId(Reservation $lieuId): self
+    {
+        if ($this->lieu_id->contains($lieuId)) {
+            $this->lieu_id->removeElement($lieuId);
+            // set the owning side to null (unless already changed)
+            if ($lieuId->getLieu() === $this) {
+                $lieuId->setLieu(null);
             }
         }
 
