@@ -9,6 +9,7 @@ use App\Entity\Reservation;
 use App\Entity\Voiture;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -23,15 +24,15 @@ class RetourType extends AbstractType
     {
         $builder
             ->add('date', DateType::class)
-            ->add('litre_carburant', NumberType::class, array(
+            ->add('litreCarburant', NumberType::class, array(
                 'attr' => array(
                     'placeholder' => 'Litre',),
                 'scale' => 2
             ))
-            ->add('montant_carburant', NumberType::class, array(
+            ->add('montantCarburant', NumberType::class, array(
                 'attr' => array(
                     'placeholder' => 'Montant',)))
-            ->add('km_parcourus', IntegerType::class, array(
+            ->add('kmParcourus', IntegerType::class, array(
                 'attr' => array(
                     'placeholder' => 'Km parcourus',),
                 'scale' => 2
@@ -41,10 +42,10 @@ class RetourType extends AbstractType
             ->add('lieu', EntityType::class , array(
                 'class' => Lieu::class,
                 'choice_label' => 'lieu',
-                'required' => true,
+                'required' => false,
                 "label" => "Lieu :"
             ))
-            ->add('nature_deplacement', EntityType::class, array(
+            ->add('natureDeplacement', EntityType::class, array(
                 'class' => NatureDeplacement::class,
                 'choice_label' => 'Nature Deplacement',
                 'required' => true,
@@ -58,10 +59,7 @@ class RetourType extends AbstractType
                     'placeholder' => 'Km au compteur'
                 )
             ))
-            ->add('conduteur', EntityType::class, array(
-                'class' => Conducteur::class,
-                'choice_label' => 'nom',
-                'required' => true,
+            ->add('conduteur', TextType::class, array(
                 'attr' => array(
                     'placeholder' => 'Votre nom'
                 )

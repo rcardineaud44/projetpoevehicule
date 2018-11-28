@@ -39,7 +39,7 @@
                             <td><a href="{{ path('voiture_reservation', {"id_voiture" : vehicule.id})}}"><button type="button" class="btn btn-default">Reserver</button></a></td>
                         {% else %}
                             <td class="nonDispo">Non Disponible</td>
-                            <td><a href="#"><button type="button" class="btn btn-default">Retourner</button></a></td>
+                            <td><a href="{{ path('retour', {"id_voiture" : vehicule.id})}}"><button type="button" class="btn btn-default">Retourner</button></a></td>
                         {% endif %}
                     </tr>
                     {% endfor %}
