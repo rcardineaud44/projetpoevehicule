@@ -8,8 +8,9 @@
         <div class="row">
             <div class="col-md-12">
 
-                <h1 class="text-center">Suivi du véhicule : </h1>
+                {% if isVoiture == true %}
 
+                <h1 class="text-center">Suivi du véhicule : {{ voiture.Reference }}</h1>
 
 
                 <table class="table">
@@ -35,6 +36,11 @@
                     </tbody>
                 </table>
 
+                {% else %}
+
+                <h1 class="text-center">Cette voiture n'a pas de suivis</h1>
+
+                {% endif %}
             </div>
         </div>
     </div>

@@ -81,13 +81,25 @@ class VoitureController extends Controller
     public function suivi($id_voiture, Request $request, EntityManagerInterface $em)
     {
         $detailRepo = $em->getRepository(Reservation::class);
-        $voiture = $detailRepo->find($id_voiture);
 
+        //Appel d'une méthode permettant de recuperer toutes les reservations concernant une voiture
+        //Stockage des reservations dans un tableat, ici $reservation
         $reservation = $detailRepo->returnAllReservationByVoiture($id_voiture);
+
+        //Vérification que des reservations existent pour cette voiture
+        if($reservation){
+            $voiture = $reservation[0]->getVehicule();
+            $isVoiture = true;
+        } else {
+            $voiture = new Voiture();
+            $isVoiture = false;
+        }
 
         return $this->render('voiture/suivi.html.twig', [
             'reservations' => $reservation,
-            'voiture' => $voiture]);
+            'voiture' => $voiture,
+            'isVoiture' => $isVoiture
+            ]);
     }
 
 }
