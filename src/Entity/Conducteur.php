@@ -37,4 +37,9 @@ class Conducteur
 
         return $this;
     }
+
+    public function getConducteur(): ?Conducteur
+    {
+        return $this->conducteur;
+    }
 }

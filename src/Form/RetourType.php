@@ -59,10 +59,11 @@ class RetourType extends AbstractType
                     'placeholder' => 'Km au compteur'
                 )
             ))
-            ->add('conduteur', TextType::class, array(
-                'attr' => array(
-                    'placeholder' => 'Votre nom'
-                )
+            ->add('conduteur', EntityType::class, array(
+                    'class' => Conducteur::class,
+                    'choice_label' => 'Conducteur',
+                    'required' => true,
+                    "label" => "Conducteur :"
             ))
         ;
     }

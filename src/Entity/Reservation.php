@@ -89,10 +89,16 @@ class Reservation
         return $this;
     }
 
-    public function getlitreCarburant()
+    public function getlitres_carburant()
     {
         return $this->litreCarburant;
     }
+
+    public function litreCarburant()
+    {
+        return $this->litreCarburant;
+    }
+
 
     public function setLitreCarburant($litreCarburant): self
     {
@@ -101,10 +107,17 @@ class Reservation
         return $this;
     }
 
-    public function getmontantCarburant()
+    public function getmontant_carburant()
     {
         return $this->montantCarburant;
     }
+
+    public function montantCarburant()
+    {
+        return $this->montantCarburant;
+    }
+
+
 
     public function setMontantCarburant($montantCarburant): self
     {
@@ -113,10 +126,16 @@ class Reservation
         return $this;
     }
 
-    public function getkmParcourus(): ?int
+    public function getkm_parcourus(): ?int
     {
         return $this->kmParcourus;
     }
+
+    public function kmParcourus(): ?int
+    {
+        return $this->kmParcourus;
+    }
+
 
     public function setKmParcourus(int $kmParcourus): self
     {
@@ -177,6 +196,8 @@ class Reservation
     {
         return $this->conduteur;
     }
+
+
 
     public function setConduteur(?Conducteur $conduteur): self
     {

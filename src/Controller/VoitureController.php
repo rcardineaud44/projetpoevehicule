@@ -82,6 +82,12 @@ class VoitureController extends Controller
     {
         $detailRepo = $em->getRepository(Reservation::class);
 
+        $totalCarburant = 0;
+        $totalKm = 0;
+        $consoMoyenne = 0;
+
+
+
         //Appel d'une méthode permettant de recuperer toutes les reservations concernant une voiture
         //Stockage des reservations dans un tableat, ici $reservation
         $reservation = $detailRepo->returnAllReservationByVoiture($id_voiture);
@@ -89,16 +95,23 @@ class VoitureController extends Controller
         //Vérification que des reservations existent pour cette voiture
         if($reservation){
             $voiture = $reservation[0]->getVehicule();
+            foreach ($reservation as $resa){
+                $totalCarburant = $totalCarburant + $resa->getlitres_carburant();
+                $totalKm = $totalKm + $resa->getkm_parcourus();
+            }
             $isVoiture = true;
+            $consoMoyenne = ($totalCarburant*100)/$totalKm;
+
         } else {
             $voiture = new Voiture();
             $isVoiture = false;
         }
-
+        
         return $this->render('voiture/suivi.html.twig', [
             'reservations' => $reservation,
             'voiture' => $voiture,
-            'isVoiture' => $isVoiture
+            'isVoiture' => $isVoiture,
+            'consoMoyenne' => $consoMoyenne
             ]);
     }
 
