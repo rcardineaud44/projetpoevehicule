@@ -197,8 +197,6 @@ class Reservation
         return $this->conduteur;
     }
 
-
-
     public function setConduteur(?Conducteur $conduteur): self
     {
         $this->conduteur = $conduteur;
