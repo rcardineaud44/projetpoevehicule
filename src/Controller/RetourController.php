@@ -28,8 +28,6 @@ class RetourController extends Controller
 
         $retourForm->handleRequest($request);
 
-        dump($trajet);
-
         if($retourForm->isSubmitted() && $retourForm->isValid()){
             //$conducteur = new Conducteur();
             $voiture->setDisponibilite(true);
