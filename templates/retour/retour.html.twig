@@ -2,6 +2,7 @@
 
 {% block title %}Retour véhicule{% endblock %}
 
+
 {% block body %}
 
     <h1>Retour Véhicule : {{ voiture.Reference }}</h1>
@@ -79,7 +80,7 @@
                 </div>
 
                 <div class="col-sm-6">
-                    {{ form_label(retourForm.litreCarburant, "Km parcouru : ", {'label_attr': {'class': 'col-sm-6 control-label'}}) }}
+                    {{ form_label(retourForm.litreCarburant, "Km parcouru : ", {'label_attr': {'class': 'col-sm-8 control-label'}}) }}
                     {{ form_widget(retourForm.kmParcouru, {'attr': {'class': 'form-control'}}) }}
                 </div>
             </div>

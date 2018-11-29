@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\Request;
 class VoitureController extends Controller
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/ajout", name="index")
      */
     public function index(Request $request, EntityManagerInterface $em)
     {
