@@ -21,7 +21,7 @@
                         <th>Km parcourus</th>
                         <th>Litres carburant</th>
                         <th>Montant carburant</th>
-                        <th>Date</th>
+                        <th>Date de retour</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -31,7 +31,7 @@
                             <td>{{ reservation.kmParcouru }}km</td>
                             <td>{{ reservation.litreCarburant }}L</td>
                             <td>{{ reservation.montantCarburant }}€</td>
-                            <td> {{ reservation.dateUtilisation|date("d/m/Y") }} </td>
+                            <td> {{ reservation.dateUtilisation|date("d/m/Y h:m") }} </td>
                         </tr>
                     {% endfor %}
                     </tbody>
