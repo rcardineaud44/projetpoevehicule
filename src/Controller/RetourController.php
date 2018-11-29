@@ -31,11 +31,13 @@ class RetourController extends Controller
         dump($trajet);
 
         if($retourForm->isSubmitted() && $retourForm->isValid()){
+            //$conducteur = new Conducteur();
             $voiture->setDisponibilite(true);
+            //$em->persist($conducteur);
             $em->persist($trajet);
             $em->flush();
 
-            $this->addFlash('success', 'Voiture retourner');
+            $this->addFlash('success', 'Voiture retournée');
 
             return $this->redirectToRoute('list');
         }

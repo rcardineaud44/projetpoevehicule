@@ -16,18 +16,19 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RetourType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateUtilisation', DateTimeType::class, [
-                'label'=> 'Date du trajet : '
+            ->add('dateUtilisation', DateTimeType::class)
+            ->add('litreCarburant', NumberType::class, [
+                'data'=> 0.0
             ])
-            ->add('litreCarburant', NumberType::class)
-            ->add('montantCarburant', NumberType::class)
+            ->add('montantCarburant', NumberType::class, [
+                'data'=>0.0
+            ])
             ->add('kmParcouru', IntegerType::class)
             ->add('destination', TextType::class)
             ->add('commentaire', TextareaType::class)
@@ -50,11 +51,12 @@ class RetourType extends AbstractType
                 "label" => "Kilometrage au compteur :"
             ])
 
-            ->add('conduteur', EntityType::class, array(
+            ->add('conducteur', EntityType::class, array(
                     'class' => Conducteur::class,
-                    'choice_label' => 'Conducteur',
+                    'choice_label' => 'nom',
                     'required' => true,
-                    "label" => "Conducteur :"
+                    "label" => "Conducteur :",
+                    "mapped" => false
             ))
 
         ;

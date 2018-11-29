@@ -19,6 +19,23 @@ class ReservationRepository extends ServiceEntityRepository
         parent::__construct($registry, Reservation::class);
     }
 
+    /**
+     * @return Reservation | null
+     */
+    public function returnAllReservationByVoiture($id)
+    {
+        $em = $this->getEntityManager();
+        $dql = "SELECT r,v 
+                FROM App\Entity\Reservation r
+                LEFT JOIN r.vehicule v
+                WHERE v.id = id";
+        $query = $em->createQuery($dql);
+        $query->setParameter('id', $id);
+        $result = $query->getResult();
+
+        return $result;
+    }
+
     // /**
     //  * @return Reservation[] Returns an array of Reservation objects
     //  */

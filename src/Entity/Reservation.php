@@ -86,11 +86,10 @@ class Reservation
         return $this->litreCarburant;
     }
 
-    public function litreCarburant()
-    {
-        return $this->litreCarburant;
-    }
-
+//    public function litreCarburant()
+//    {
+//        return $this->litreCarburant;
+//    }
 
     public function setLitreCarburant($litreCarburant): self
     {
@@ -104,12 +103,10 @@ class Reservation
         return $this->montantCarburant;
     }
 
-    public function montantCarburant()
-    {
-        return $this->montantCarburant;
-    }
-
-
+////    public function montantCarburant()
+//    {
+//        return $this->montantCarburant;
+//    }
 
     public function setMontantCarburant($montantCarburant): self
     {

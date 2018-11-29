@@ -96,8 +96,8 @@ class VoitureController extends Controller
         if($reservation){
             $voiture = $reservation[0]->getVehicule();
             foreach ($reservation as $resa){
-                $totalCarburant = $totalCarburant + $resa->getlitres_carburant();
-                $totalKm = $totalKm + $resa->getkm_parcourus();
+                $totalCarburant = $totalCarburant + $resa->getlitresCarburant();
+                $totalKm = $totalKm + $resa->getKmParcouru();
             }
             $isVoiture = true;
             $consoMoyenne = ($totalCarburant*100)/$totalKm;
