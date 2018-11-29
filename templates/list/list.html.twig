@@ -30,7 +30,11 @@
                     <tbody>
                     {% for vehicule in list %}
                     <tr>
-                        <td><a href="{{ path('voiture_suivi', {"id_voiture" : vehicule.id})}}">{{ vehicule.reference }}</a></td>
+                        {% if is_granted("ROLE_ADMIN") %}
+                            <td><a href="{{ path('voiture_suivi', {"id_voiture" : vehicule.id})}}">{{ vehicule.reference }}</a></td>
+                        {% else %}
+                            <td>{{ vehicule.reference }}</td>
+                        {% endif %}
                         <td>{{ vehicule.kilometrage }} km</td>
                         <td>{{ vehicule.typeCarburant.type }}</td>
                         <td>{{ vehicule.lieu.lieu }}</td>
@@ -52,10 +56,10 @@
                 <a href="{{ path('lieu_ajout') }}"><button type="button" class="btn btn-primary pull-right">
                         Ajouter un lieu
                 </button></a>
-                <a href="{{ path('conducteur_ajout') }}"><button type="button" class="btn btn-primary pull-right">
-                       Ajouter un conducteur
-                </button></a>
                 {% endif %}
+                <a href="{{ path('conducteur_ajout') }}"><button type="button" class="btn btn-primary pull-right">
+                        Ajouter un conducteur
+                </button></a>
             </div>
         </div>
     </div>
