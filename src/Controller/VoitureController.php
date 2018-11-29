@@ -106,6 +106,8 @@ class VoitureController extends Controller
             $voiture = new Voiture();
             $isVoiture = false;
         }
+
+        dump($reservation);
         
         return $this->render('voiture/suivi.html.twig', [
             'reservations' => $reservation,
