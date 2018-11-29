@@ -24,14 +24,18 @@ class RetourType extends AbstractType
         $builder
             ->add('dateUtilisation', DateTimeType::class)
             ->add('litreCarburant', NumberType::class, [
-                'data'=> 0.0
+                'required'   => false,
+                //'data'=> 0.0
             ])
             ->add('montantCarburant', NumberType::class, [
-                'data'=>0.0
+                'required'   => false,
+                //'data'=>0.0
             ])
             ->add('kmParcouru', IntegerType::class)
             ->add('destination', TextType::class)
-            ->add('commentaire', TextareaType::class)
+            ->add('commentaire', TextareaType::class, [
+                'required'   => false,
+            ])
             ->add('nature', EntityType::class, [
                 'class' => NatureDeplacement::class,
                 'choice_label' => 'natureDeplacement',
