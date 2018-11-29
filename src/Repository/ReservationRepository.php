@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Entity\Reservation;
-use App\Entity\Voiture;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -21,12 +20,12 @@ class ReservationRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Reservation |null
+     * @return Reservation | null
      */
     public function returnAllReservationByVoiture($id)
     {
         $em = $this->getEntityManager();
-        $dql = "SELECT r, v
+        $dql = "SELECT r,v 
                 FROM App\Entity\Reservation r
                 LEFT JOIN r.vehicule v
                 WHERE v.id = :id";
@@ -37,7 +36,22 @@ class ReservationRepository extends ServiceEntityRepository
         return $result;
     }
 
-
+    // /**
+    //  * @return Reservation[] Returns an array of Reservation objects
+    //  */
+    /*
+    public function findByExampleField($value)
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.exampleField = :val')
+            ->setParameter('val', $value)
+            ->orderBy('r.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    */
 
     /*
     public function findOneBySomeField($value): ?Reservation

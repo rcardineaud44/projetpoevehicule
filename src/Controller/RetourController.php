@@ -23,19 +23,21 @@ class RetourController extends Controller
         $voiture = $listRepo->find($id_voiture);
 
         //pour le retour par rapport à l'id du véhucile
-        $detailRepo = $em->getRepository(Reservation::class);
-        $Detailvoiture = $detailRepo->find($id_voiture);
-
-        $retourForm = $this->createForm(RetourType::class, $Detailvoiture);
+        $trajet = new Reservation();
+        $retourForm = $this->createForm(RetourType::class, $trajet);
 
         $retourForm->handleRequest($request);
 
+        dump($trajet);
+
         if($retourForm->isSubmitted() && $retourForm->isValid()){
-            $Detailvoiture->setDisponibilite(true);
-            $em->persist($Detailvoiture);
+            //$conducteur = new Conducteur();
+            $voiture->setDisponibilite(true);
+            //$em->persist($conducteur);
+            $em->persist($trajet);
             $em->flush();
 
-            $this->addFlash('success', 'Voiture retourner');
+            $this->addFlash('success', 'Voiture retournée');
 
             return $this->redirectToRoute('list');
         }

@@ -19,11 +19,6 @@ class Reservation
     private $id;
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    private $date;
-
-    /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $litreCarburant;
@@ -36,7 +31,12 @@ class Reservation
     /**
      * @ORM\Column(type="integer")
      */
-    private $kmParcourus;
+    private $kmParcouru;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $destination;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -44,61 +44,52 @@ class Reservation
     private $commentaire;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu", inversedBy="lieu")
+     * @ORM\ManyToOne(targetEntity="App\Entity\NatureDeplacement", inversedBy="nature_id")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $lieu;
+    private $nature;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\NatureDeplacement")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $natureDeplacement;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Voiture")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Voiture", inversedBy="voiture_id")
      * @ORM\JoinColumn(nullable=false)
      */
     private $vehicule;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Conducteur")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="datetime")
      */
-    private $conduteur;
+    private $dateUtilisation;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu", inversedBy="lieu_id")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $destination;
+    private $lieu;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Conducteur", inversedBy="reservation_id")
+     */
+    private $conducteur;
+
+    public function __construct()
+    {
+        $this->conducteur = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(\DateTimeInterface $date): self
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    public function getlitres_carburant()
+    public function getLitreCarburant()
     {
         return $this->litreCarburant;
     }
 
-    public function litreCarburant()
-    {
-        return $this->litreCarburant;
-    }
-
+//    public function litreCarburant()
+//    {
+//        return $this->litreCarburant;
+//    }
 
     public function setLitreCarburant($litreCarburant): self
     {
@@ -107,17 +98,15 @@ class Reservation
         return $this;
     }
 
-    public function getmontant_carburant()
+    public function getMontantCarburant()
     {
         return $this->montantCarburant;
     }
 
-    public function montantCarburant()
-    {
-        return $this->montantCarburant;
-    }
-
-
+////    public function montantCarburant()
+//    {
+//        return $this->montantCarburant;
+//    }
 
     public function setMontantCarburant($montantCarburant): self
     {
@@ -126,20 +115,25 @@ class Reservation
         return $this;
     }
 
-    public function getkm_parcourus(): ?int
+    public function getKmParcouru(): ?int
     {
-        return $this->kmParcourus;
+        return $this->kmParcouru;
     }
 
-    public function kmParcourus(): ?int
+    public function setKmParcouru(int $kmParcouru): self
     {
-        return $this->kmParcourus;
+        $this->kmParcouru = $kmParcouru;
+        return $this;
     }
 
-
-    public function setKmParcourus(int $kmParcourus): self
+    public function getDestination(): ?string
     {
-        $this->kmParcourus = $kmParcourus;
+        return $this->destination;
+    }
+
+    public function setDestination(string $destination): self
+    {
+        $this->destination = $destination;
 
         return $this;
     }
@@ -156,26 +150,14 @@ class Reservation
         return $this;
     }
 
-    public function getLieu(): ?Lieu
+    public function getNature(): ?NatureDeplacement
     {
-        return $this->lieu;
+        return $this->nature;
     }
 
-    public function setLieu(?Lieu $lieu): self
+    public function setNature(?NatureDeplacement $nature): self
     {
-        $this->lieu = $lieu;
-
-        return $this;
-    }
-
-    public function getNatureDeplacement(): ?NatureDeplacement
-    {
-        return $this->natureDeplacement;
-    }
-
-    public function setNatureDeplacement(?NatureDeplacement $natureDeplacement): self
-    {
-        $this->natureDeplacement = $natureDeplacement;
+        $this->nature = $nature;
 
         return $this;
     }
@@ -192,28 +174,53 @@ class Reservation
         return $this;
     }
 
-    public function getConduteur(): ?Conducteur
+    public function getDateUtilisation(): ?\DateTimeInterface
     {
-        return $this->conduteur;
+        return $this->dateUtilisation;
     }
 
-    public function setConduteur(?Conducteur $conduteur): self
+    public function setDateUtilisation(\DateTimeInterface $dateUtilisation): self
     {
-        $this->conduteur = $conduteur;
+        $this->dateUtilisation = $dateUtilisation;
 
         return $this;
     }
 
-    public function getDestination(): ?string
+    public function getLieu(): ?Lieu
     {
-        return $this->destination;
+        return $this->lieu;
     }
 
-    public function setDestination(string $destination): self
+    public function setLieu(?Lieu $lieu): self
     {
-        $this->destination = $destination;
+        $this->lieu = $lieu;
 
         return $this;
     }
 
+    /**
+     * @return Collection|Conducteur[]
+     */
+    public function getConducteur(): Collection
+    {
+        return $this->conducteur;
+    }
+
+    public function addConducteur(Conducteur $conducteur): self
+    {
+        if (!$this->conducteur->contains($conducteur)) {
+            $this->conducteur[] = $conducteur;
+        }
+
+        return $this;
+    }
+
+    public function removeConducteur(Conducteur $conducteur): self
+    {
+        if ($this->conducteur->contains($conducteur)) {
+            $this->conducteur->removeElement($conducteur);
+        }
+
+        return $this;
+    }
 }

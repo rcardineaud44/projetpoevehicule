@@ -12,18 +12,18 @@
         <div class="col-md-6 form-line">
 
             <div class="form-group">
-                {{ form_label(retourForm.date, "Date de début d'utilisation : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-                {{ form_errors(retourForm.date) }}
+                {{ form_label(retourForm.dateUtilisation, "Date de début d'utilisation : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(retourForm.dateUtilisation) }}
                 <div class="col-sm-9">
-                    {{ form_widget(retourForm.date) }}
+                    {{ form_widget(retourForm.dateUtilisation) }}
                 </div>
             </div>
 
             <div class="form-group">
-                {{ form_label(retourForm.natureDeplacement, "Nature du déplacement : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-                {{ form_errors(retourForm.natureDeplacement) }}
+                {{ form_label(retourForm.nature, "Nature du déplacement : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(retourForm.nature) }}
                 <div class="col-sm-9">
-                    {{ form_widget(retourForm.natureDeplacement, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(retourForm.nature, {'attr': {'class': 'form-control'}}) }}
                 </div>
             </div>
 
@@ -76,18 +76,18 @@
                 </div>
 
                 <div class="col-sm-6">
-                    {{ form_widget(retourForm.kmParcourus, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(retourForm.kmParcouru, {'attr': {'class': 'form-control'}}) }}
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                {{ form_label(retourForm.conduteur, "Conducteur : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-                {{ form_errors(retourForm.conduteur) }}
-                {#{% for conduteurs in retourForm.conduteur %}#}
+                {{ form_label(retourForm.conducteur, "Conducteur : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(retourForm.conducteur) }}
+                {#{% for conducteurs in retourForm.conducteur %}#}
                 <div class="col-sm-9">
-                    {{ form_errors(retourForm.conduteur) }}
-                    {{ form_widget(retourForm.conduteur, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(retourForm.conducteur) }}
+                    {{ form_widget(retourForm.conducteur, {'attr': {'class': 'form-control'}}) }}
                 </div>
                 {#{% endfor %}#}
             </div>

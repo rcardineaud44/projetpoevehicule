@@ -27,11 +27,11 @@
                     <tbody>
                     {% for reservation in reservations %}
                         <tr>
-                            <td>{{ reservation.conduteur.nom }}</td>
-                            <td>{{ reservation.km_parcourus }}km</td>
-                            <td>{{ reservation.litres_carburant }}L</td>
-                            <td>{{ reservation.montant_carburant }}€</td>
-                            <td> {{ reservation.date|date("d/m/Y") }} </td>
+                            <td>{{ reservation.conducteur.nom }}</td>
+                            <td>{{ reservation.kmParcouru }}km</td>
+                            <td>{{ reservation.litreCarburant }}L</td>
+                            <td>{{ reservation.montantCarburant }}€</td>
+                            <td> {{ reservation.dateUtilisation|date("d/m/Y") }} </td>
                         </tr>
                     {% endfor %}
                     </tbody>

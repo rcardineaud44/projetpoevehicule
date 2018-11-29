@@ -45,14 +45,14 @@
                     {% endfor %}
                     </tbody>
                 </table>
-                {#{% if is_granted("ROLE_ADMIN") %}#}
+                {% if is_granted("ROLE_ADMIN") %}
                 <a href="{{ path('voiture_index') }}"><button type="button" class="btn btn-primary pull-right">
                     Ajouter un véhicule
                 </button></a>
                 <a href="{{ path('lieu_ajout') }}"><button type="button" class="btn btn-primary pull-right">
                         Ajouter un lieu
                 </button></a>
-                {#{% endif %}#}
+                {% endif %}
             </div>
         </div>
     </div>
