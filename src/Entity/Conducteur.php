@@ -24,13 +24,13 @@ class Conducteur
     private $nom;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Reservation", mappedBy="conducteur")
+     * @ORM\OneToMany(targetEntity="App\Entity\Reservation", mappedBy="Conducteur")
      */
-    private $reservation_id;
+    private $reservations;
 
     public function __construct()
     {
-        $this->reservation_id = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -50,34 +50,38 @@ class Conducteur
         return $this;
     }
 
-
     /**
      * @return Collection|Reservation[]
      */
-    public function getReservationId(): Collection
+    public function getReservations(): Collection
     {
-        return $this->reservation_id;
+        return $this->reservations;
     }
 
-    public function addReservationId(Reservation $reservationId): self
+    public function addReservation(Reservation $reservation): self
     {
-        if (!$this->reservation_id->contains($reservationId)) {
-            $this->reservation_id[] = $reservationId;
-            $reservationId->addConducteur($this);
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations[] = $reservation;
+            $reservation->setConducteur($this);
         }
 
         return $this;
     }
 
-    public function removeReservationId(Reservation $reservationId): self
+    public function removeReservation(Reservation $reservation): self
     {
-        if ($this->reservation_id->contains($reservationId)) {
-            $this->reservation_id->removeElement($reservationId);
-            $reservationId->removeConducteur($this);
+        if ($this->reservations->contains($reservation)) {
+            $this->reservations->removeElement($reservation);
+            // set the owning side to null (unless already changed)
+            if ($reservation->getConducteur() === $this) {
+                $reservation->setConducteur(null);
+            }
         }
 
         return $this;
     }
+
+
 //    public function getConducteur(): ?Conducteur
 //    {
 //        return $this->conducteur;

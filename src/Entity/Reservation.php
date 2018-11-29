@@ -67,14 +67,11 @@ class Reservation
     private $lieu;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Conducteur", inversedBy="reservation_id")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Conducteur", inversedBy="reservations")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $conducteur;
+    private $Conducteur;
 
-    public function __construct()
-    {
-        $this->conducteur = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -85,11 +82,6 @@ class Reservation
     {
         return $this->litreCarburant;
     }
-
-//    public function litreCarburant()
-//    {
-//        return $this->litreCarburant;
-//    }
 
     public function setLitreCarburant($litreCarburant): self
     {
@@ -102,11 +94,6 @@ class Reservation
     {
         return $this->montantCarburant;
     }
-
-////    public function montantCarburant()
-//    {
-//        return $this->montantCarburant;
-//    }
 
     public function setMontantCarburant($montantCarburant): self
     {
@@ -198,28 +185,14 @@ class Reservation
         return $this;
     }
 
-    /**
-     * @return Collection|Conducteur[]
-     */
-    public function getConducteur(): Collection
+    public function getConducteur(): ?Conducteur
     {
-        return $this->conducteur;
+        return $this->Conducteur;
     }
 
-    public function addConducteur(Conducteur $conducteur): self
+    public function setConducteur(?Conducteur $Conducteur): self
     {
-        if (!$this->conducteur->contains($conducteur)) {
-            $this->conducteur[] = $conducteur;
-        }
-
-        return $this;
-    }
-
-    public function removeConducteur(Conducteur $conducteur): self
-    {
-        if ($this->conducteur->contains($conducteur)) {
-            $this->conducteur->removeElement($conducteur);
-        }
+        $this->Conducteur = $Conducteur;
 
         return $this;
     }

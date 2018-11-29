@@ -57,8 +57,7 @@ class RetourType extends AbstractType
                     'class' => Conducteur::class,
                     'choice_label' => 'nom',
                     'required' => true,
-                    "label" => "Conducteur :",
-                    "mapped" => false
+                    "label" => "Conducteur :"
             ))
 
         ;
