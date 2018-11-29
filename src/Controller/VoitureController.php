@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\Request;
 class VoitureController extends Controller
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/ajout", name="index")
      */
     public function index(Request $request, EntityManagerInterface $em)
     {
@@ -85,8 +85,6 @@ class VoitureController extends Controller
         $totalCarburant = 0;
         $totalKm = 0;
         $consoMoyenne = 0;
-
-
 
         //Appel d'une méthode permettant de recuperer toutes les reservations concernant une voiture
         //Stockage des reservations dans un tableat, ici $reservation
