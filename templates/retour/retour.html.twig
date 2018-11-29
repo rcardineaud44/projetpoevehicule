@@ -54,9 +54,11 @@
             <div class="form-group">
                 {{ form_errors(retourForm.litreCarburant) }}
                 <div class="col-sm-6">
+                    {{ form_label(retourForm.litreCarburant, "Litre : ", {'label_attr': {'class': 'col-sm-6 control-label'}}) }}
                     {{ form_widget(retourForm.litreCarburant, {'attr': {'class': 'form-control'}}) }}
                 </div>
                 <div class="col-sm-6">
+                    {{ form_label(retourForm.litreCarburant, "Montant : ", {'label_attr': {'class': 'col-sm-6 control-label'}}) }}
                     {{ form_widget(retourForm.montantCarburant, {'attr': {'class': 'form-control'}}) }}
                 </div>
             </div>
@@ -72,10 +74,12 @@
             <div class="form-group">
                 {{ form_errors(retourForm.vehicule) }}
                 <div class="col-sm-6">
+                    {{ form_label(retourForm.litreCarburant, "Km au compteur : ", {'label_attr': {'class': 'col-sm-8 control-label'}}) }}
                     {{ form_widget(retourForm.vehicule, {'attr': {'class': 'form-control' }}) }}
                 </div>
 
                 <div class="col-sm-6">
+                    {{ form_label(retourForm.litreCarburant, "Km parcouru : ", {'label_attr': {'class': 'col-sm-6 control-label'}}) }}
                     {{ form_widget(retourForm.kmParcouru, {'attr': {'class': 'form-control'}}) }}
                 </div>
             </div>

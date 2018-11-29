@@ -22,12 +22,16 @@ class RetourType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateUtilisation', DateTimeType::class)
+            ->add('dateUtilisation', DateTimeType::class, [
+                'widget' => 'single_text'
+            ])
             ->add('litreCarburant', NumberType::class, [
-                'data'=> 0.0
+                'data'=> 0.0,
+                'label' => 'Litre'
             ])
             ->add('montantCarburant', NumberType::class, [
-                'data'=>0.0
+                'data'=>0.0,
+                'label'=> 'Montant'
             ])
             ->add('kmParcouru', IntegerType::class)
             ->add('destination', TextType::class)
