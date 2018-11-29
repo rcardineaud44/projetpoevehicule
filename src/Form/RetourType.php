@@ -50,6 +50,7 @@ class RetourType extends AbstractType
             ])
             ->add('vehicule', EntityType::class, [
                 'class' => Voiture::class,
+                'disabled'=> true,
                 'choice_label' => 'Kilometrage',
                 'required' => true,
                 "label" => "Kilometrage au compteur :"

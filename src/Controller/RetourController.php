@@ -24,14 +24,18 @@ class RetourController extends Controller
 
         //pour le retour par rapport à l'id du véhucile
         $trajet = new Reservation();
+        $trajet->setVehicule($voiture);
+
         $retourForm = $this->createForm(RetourType::class, $trajet);
 
         $retourForm->handleRequest($request);
 
+        dump($retourForm);
+
         if($retourForm->isSubmitted() && $retourForm->isValid()){
-            //$conducteur = new Conducteur();
             $voiture->setDisponibilite(true);
-            //$em->persist($conducteur);
+            $km = $voiture->getKilometrage();
+            $voiture->setKilometrage($km + $trajet->getKmParcouru());
             $em->persist($trajet);
             $em->flush();
 
