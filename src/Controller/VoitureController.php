@@ -96,7 +96,7 @@ class VoitureController extends Controller
         if($reservation){
             $voiture = $reservation[0]->getVehicule();
             foreach ($reservation as $resa){
-                $totalCarburant = $totalCarburant + $resa->getlitresCarburant();
+                $totalCarburant = $totalCarburant + $resa->getLitreCarburant();
                 $totalKm = $totalKm + $resa->getKmParcouru();
             }
             $isVoiture = true;
